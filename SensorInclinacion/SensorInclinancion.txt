@@ -1,0 +1,21 @@
+// Definir pin de entrada para el switch de inclinación
+const int TILT_SWITCH_PIN = 4;
+
+void setup() {
+  // Configurar pin de entrada para el switch de inclinación
+  pinMode(TILT_SWITCH_PIN, INPUT_PULLUP);
+
+  // Iniciar comunicación serial a 9600 baudios
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Leer el valor del switch de inclinación
+  int tiltValue = digitalRead(TILT_SWITCH_PIN);
+
+  // Imprimir el valor leído por el switch en el monitor serial
+  Serial.println(tiltValue);
+
+  // Esperar un breve tiempo antes de volver a leer el switch
+  delay(100);
+}

@@ -1,0 +1,21 @@
+// Definir pines de salida para el LED bicolor
+const int LED_PIN_1 = 2;
+const int LED_PIN_2 = 3;
+
+void setup() {
+  // Configurar pines de salida para el LED bicolor
+  pinMode(LED_PIN_1, OUTPUT);
+  pinMode(LED_PIN_2, OUTPUT);
+}
+
+void loop() {
+  // Encender el LED de color 1 y apagar el LED de color 2
+  digitalWrite(LED_PIN_1, HIGH);
+  digitalWrite(LED_PIN_2, LOW);
+  delay(1000);
+
+  // Encender el LED de color 2 y apagar el LED de color 1
+  digitalWrite(LED_PIN_1, LOW);
+  digitalWrite(LED_PIN_2, HIGH);
+  delay(1000);
+}

@@ -1,0 +1,26 @@
+// Definir pin de entrada para el botón
+const int BUTTON_PIN = 2;
+
+// Definir pin de salida para el buzzer
+const int BUZZER_PIN = 3;
+
+void setup() {
+  // Configurar pin de entrada para el botón
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+
+  // Configurar pin de salida para el buzzer
+  pinMode(BUZZER_PIN, OUTPUT);
+}
+
+void loop() {
+  // Leer el estado del botón
+  int buttonState = digitalRead(BUTTON_PIN);
+
+  // Si se presiona el botón, hacer sonar el buzzer
+  if (buttonState == LOW) {
+    digitalWrite(BUZZER_PIN, HIGH);
+    delay(1000);
+    digitalWrite(BUZZER_PIN, LOW);
+    delay(1000);
+  }
+}

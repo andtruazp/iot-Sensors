@@ -1,0 +1,21 @@
+// Definir pin de entrada para el sensor táctil
+const int TOUCH_SENSOR_PIN = 4;
+
+void setup() {
+  // Configurar pin de entrada para el sensor táctil
+  pinMode(TOUCH_SENSOR_PIN, INPUT);
+
+  // Iniciar comunicación serial a 9600 baudios
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Leer el valor del sensor táctil
+  int touchValue = digitalRead(TOUCH_SENSOR_PIN);
+
+  // Imprimir el valor leído por el sensor en el monitor serial
+  Serial.println(touchValue);
+
+  // Esperar un breve tiempo antes de volver a leer el sensor
+  delay(100);
+}

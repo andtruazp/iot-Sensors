@@ -1,0 +1,21 @@
+// Definir pin de entrada para el sensor Hall magnético
+const int HALL_SENSOR_PIN = 2;
+
+void setup() {
+  // Configurar pin de entrada para el sensor Hall magnético
+  pinMode(HALL_SENSOR_PIN, INPUT);
+  
+  // Iniciar comunicación serial a 9600 baudios
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Leer el valor del sensor Hall magnético
+  int hallValue = digitalRead(HALL_SENSOR_PIN);
+  
+  // Imprimir el valor leído por el sensor en el monitor serial
+  Serial.println(hallValue);
+  
+  // Esperar un breve tiempo antes de volver a leer el sensor
+  delay(100);
+}

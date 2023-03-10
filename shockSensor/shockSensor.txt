@@ -1,0 +1,42 @@
+// Incluir librería para el sensor de choque
+#include <ADXL345.h>
+
+// Definir objeto para el sensor de choque
+ADXL345 accelerometer;
+
+// Definir pines de salida para el LED
+const int LED_PIN = 2;
+
+// Definir umbral de sensibilidad del sensor
+const int THRESHOLD = 20;
+
+void setup() {
+  // Inicializar comunicación serial
+  Serial.begin(9600);
+
+  // Inicializar el sensor de choque
+  accelerometer.begin();
+
+  // Configurar pin de salida para el LED
+  pinMode(LED_PIN, OUTPUT);
+}
+
+void loop() {
+  // Leer los valores de aceleración en los tres ejes
+  int x, y, z;
+  accelerometer.readXYZ(&x, &y, &z);
+
+  // Calcular la magnitud de la aceleración
+  float acceleration = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
+
+  // Si la magnitud de la aceleración es mayor que el umbral, encender el LED
+  if (acceleration > THRESHOLD) {
+    digitalWrite(LED_PIN, HIGH);
+    Serial.println("Se detectó un choque!");
+  } else {
+    digitalWrite(LED_PIN, LOW);
+  }
+
+  // Esperar un breve periodo de tiempo antes de volver a leer los valores del sensor
+  delay(100);
+}
