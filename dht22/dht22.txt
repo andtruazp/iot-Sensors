@@ -1,0 +1,33 @@
+// Incluir librería para el sensor DHT22
+#include <DHT.h>
+
+// Definir pin de conexión del sensor DHT22
+const int DHT_PIN = 2;
+
+// Crear objeto del sensor DHT22
+DHT dht(DHT_PIN, DHT22);
+
+void setup() {
+  // Iniciar comunicación serial a 9600 baudios
+  Serial.begin(9600);
+
+  // Iniciar el sensor DHT22
+  dht.begin();
+}
+
+void loop() {
+  // Leer la humedad relativa y la temperatura del sensor DHT22
+  float humidity = dht.readHumidity();
+  float temperature = dht.readTemperature();
+
+  // Imprimir los valores leídos en el monitor serial
+  Serial.print("Humedad: ");
+  Serial.print(humidity);
+  Serial.print(" %\t");
+  Serial.print("Temperatura: ");
+  Serial.print(temperature);
+  Serial.println(" *C");
+
+  // Esperar un breve tiempo antes de volver a leer el sensor
+  delay(2000);
+}
